@@ -2,6 +2,8 @@ import 'whatwg-fetch';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Image from './components/Image';
+
 export default class ImageGallery extends Component {
     static displayName = 'ImageGallery';
     static propTypes = {
@@ -21,18 +23,34 @@ export default class ImageGallery extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            index: 0
+        };
+    }
+
+    componentDidMount() {
+        let newIndex = this.state.index;
+
+        setInterval(() => {
+            if(this.state.index >= this.props.images.length - 1) {
+                newIndex = -1;
+            } else {
+                newIndex = this.state.index + 1;
+            }
+            this.setState({ index: newIndex });
+        }, this.props.interval);
     }
 
     _renderImages() {
-        return this.props.images.map((image, key) => {
-            const styleObject = {
-                backgroundImage: `url(${image.url})`
-            };
+        return this.state.index === -1 ? null : this.props.images.map((image, key) => {
             return (
-                <div key={`image_${key}`} className="image" style={styleObject}>
-
-                </div>
+                <Image
+                    key={`image_${key}`}
+                    url={image.url}
+                    duration={this.props.duration}
+                    in={key === this.state.index}
+                    out={this.state.index > key}
+                />
             );
         });
     }

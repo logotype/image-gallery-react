@@ -209,7 +209,7 @@
     "wrap-regex": "warn",
 
     /* ES6/ES2015 SPECIFIC */
-    "arrow-body-style": "warn",
+    "arrow-body-style": "off",
     "arrow-parens": ["off", "always"],
     "arrow-spacing": ["error", { "before": true, "after": true }],
     "constructor-super": "error",
