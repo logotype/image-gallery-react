@@ -1,6 +1,6 @@
 {
   "name": "image-gallery-react",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "image-gallery-react",
   "main": "./build/image-gallery.min",
   "author": "Victor Norgren <victor@logotype.se>",
@@ -40,7 +40,7 @@
   },
   "scripts": {
     "eslint": "eslint *.config.babel.js src",
-    "dev-start-devserver": "rimraf build && webpack-dev-server -d",
+    "dev-start-devserver": "webpack-dev-server -d",
     "prod-build": "rimraf build && webpack -p --optimize-minimize"
   },
   "dependencies": {

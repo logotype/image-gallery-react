@@ -46,7 +46,8 @@ module.exports = {
     output: {
         filename: '[name].min.js',
         path: path.join(__dirname, '/build'),
-        publicPath: '/'
+        library: 'ImageGallery',
+        libraryTarget: 'umd'
     },
     module: {
         rules: [
