@@ -34,6 +34,7 @@ export default class ImageGallery extends Component {
     componentDidMount() {
         this._shouldSetState = true;
         this._restart();
+        this._cacheImages(this.props.images);
     }
 
     componentWillUnmount() {
@@ -41,8 +42,31 @@ export default class ImageGallery extends Component {
         clearInterval(this._interval);
     }
 
-    componentWillReceiveProps() {
-        this.setState({ index: 0 });
+    _cacheImages(images) {
+        const promises = [];
+        images.forEach((image) => {
+            const promise = new Promise((resolve, reject) => {
+                const imageData = document.createElement('img');
+                imageData.onload = (result) => {
+                    resolve(result);
+                };
+                imageData.onerror = (error) => {
+                    reject(error);
+                };
+                imageData.src = image.url;
+            });
+            promises.push(promise);
+        });
+        return Promise.all(promises);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this._cacheImages(nextProps.images)
+            .then(() => {
+                if(this._shouldSetState) {
+                    this.setState({ index: 0 });
+                }
+            });
     }
 
     _restart() {
