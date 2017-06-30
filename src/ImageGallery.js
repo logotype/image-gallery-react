@@ -14,6 +14,7 @@ export default class ImageGallery extends Component {
         )
     };
     static defaultProps = {
+        images: [],
         interval: 5000,
         duration: 1000
     };
@@ -23,9 +24,24 @@ export default class ImageGallery extends Component {
         this.state = {};
     }
 
+    _renderImages() {
+        return this.props.images.map((image, key) => {
+            const styleObject = {
+                backgroundImage: `url(${image.url})`
+            };
+            return (
+                <div key={`image_${key}`} className="image" style={styleObject}>
+
+                </div>
+            );
+        });
+    }
+
     render() {
         return (
-            <div className="image-gallery">Gallery</div>
+            <div className="image-gallery">
+                {this._renderImages()}
+            </div>
         );
     }
 }

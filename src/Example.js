@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 import ImageGallery from './ImageGallery';
 
-require('./../scss/image-gallery.scss');
+require('./../scss/example.scss');
 
 const images = [
     { url: 'http://localhost/img1.jpg' },

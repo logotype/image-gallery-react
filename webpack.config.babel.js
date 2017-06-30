@@ -9,7 +9,7 @@ const optimizeMinimize = Boolean(yargs.argv.p);
 const nodeEnv = optimizeMinimize ? 'production' : 'development';
 
 const styleGallery = new ExtractTextWebpackPlugin({ filename: 'image-gallery.min.css', allChunks: false });
-const styleExample = new ExtractTextWebpackPlugin({ filename: 'client.min.css', allChunks: false });
+const styleExample = new ExtractTextWebpackPlugin({ filename: 'example.min.css', allChunks: false });
 
 console.log('Build:', nodeEnv, ' optimizeMinimize:', optimizeMinimize);
 
@@ -41,7 +41,7 @@ const plugins = optimizeMinimize ? [
 module.exports = {
     entry: {
         'image-gallery': './src/ImageGallery.js',
-        example: './src/Example.js'
+        'example': './src/Example.js'
     },
     output: {
         filename: '[name].min.js',
@@ -61,7 +61,7 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /scss\/Example\.scss$/,
+                test: /scss\/example\.scss$/,
                 use: styleExample.extract(['css-loader', 'sass-loader']),
                 exclude: /node_modules/
             },
