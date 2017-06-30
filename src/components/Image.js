@@ -7,6 +7,7 @@ export default class Image extends Component {
     static propTypes = {
         duration: PropTypes.number.isRequired,
         in: PropTypes.bool,
+        reset: PropTypes.bool,
         out: PropTypes.bool,
         url: PropTypes.string.isRequired
     };
@@ -15,8 +16,9 @@ export default class Image extends Component {
     render() {
         const styleObject = {
             backgroundImage: `url(${this.props.url})`,
-            transitionDuration: `${this.props.duration}ms`
+            transitionDuration: `${this.props.duration}ms`,
+            transitionProperty: this.props.reset ? 'none' : 'all'
         };
-        return <div className={classNames('image', { 'in': this.props.in, 'out': this.props.out })} style={styleObject} />;
+        return <div className={classNames('image', { 'in': this.props.in, 'out': this.props.out, 'reset': this.props.reset })} style={styleObject} />;
     }
 }

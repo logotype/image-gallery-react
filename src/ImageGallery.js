@@ -74,11 +74,11 @@ export default class ImageGallery extends Component {
 
         clearInterval(this._interval);
         this._interval = setInterval(() => {
-            if(this.state.index >= this.props.images.length - 1) {
+            if(this.state.index === this.props.images.length - 1) {
                 if(this.props.onRestart) {
                     this.props.onRestart();
                 }
-                newIndex = -1;
+                newIndex = 0;
             } else {
                 newIndex = this.state.index + 1;
             }
@@ -88,15 +88,25 @@ export default class ImageGallery extends Component {
         }, this.props.interval);
     }
 
+    _imageStateOut () {
+        return this.state.index === 0 ? this.props.images.length - 1 : this.state.index - 1;
+    }
+
+    _imageStateReset() {
+        const resetIndex = (this.state.index % this.props.images.length) - 2;
+        return resetIndex >= 0 ? resetIndex : this.props.images.length + resetIndex;
+    }
+
     _renderImages() {
-        return this.state.index === -1 ? null : this.props.images.map((image, key) => {
+        return this.props.images.map((image, i) => {
             return (
                 <Image
-                    key={`image_${key}`}
+                    key={`image_${i}`}
                     url={image.url}
                     duration={this.props.duration}
-                    in={key === this.state.index}
-                    out={this.state.index > key}
+                    in={i === this.state.index}
+                    out={i === this._imageStateOut()}
+                    reset={i === this._imageStateReset()}
                 />
             );
         });
