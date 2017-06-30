@@ -54,6 +54,8 @@ class MyComponent extends Component {
 * `interval`: Integer, default `5000`
 * `duration`: Integer, default `1000`
   * Transition duration during image slide in milliseconds
+* `onRestart`: Function, `callback()`
+  * Called when slideshow has reached the last image
 
 # License
 MIT License

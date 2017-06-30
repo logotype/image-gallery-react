@@ -13,7 +13,8 @@ export default class ImageGallery extends Component {
             PropTypes.shape({
                 url: PropTypes.string.isRequired
             })
-        )
+        ),
+        onRestart: PropTypes.func
     };
     static defaultProps = {
         images: [],
@@ -26,18 +27,40 @@ export default class ImageGallery extends Component {
         this.state = {
             index: 0
         };
+        this._shouldSetState = false;
+        this._interval = null;
     }
 
     componentDidMount() {
+        this._shouldSetState = true;
+        this._restart();
+    }
+
+    componentWillUnmount() {
+        this._shouldSetState = false;
+        clearInterval(this._interval);
+    }
+
+    componentWillReceiveProps() {
+        this.setState({ index: 0 });
+    }
+
+    _restart() {
         let newIndex = this.state.index;
 
-        setInterval(() => {
+        clearInterval(this._interval);
+        this._interval = setInterval(() => {
             if(this.state.index >= this.props.images.length - 1) {
+                if(this.props.onRestart) {
+                    this.props.onRestart();
+                }
                 newIndex = -1;
             } else {
                 newIndex = this.state.index + 1;
             }
-            this.setState({ index: newIndex });
+            if(this._shouldSetState) {
+                this.setState({ index: newIndex });
+            }
         }, this.props.interval);
     }
 

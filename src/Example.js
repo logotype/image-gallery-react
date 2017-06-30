@@ -12,4 +12,4 @@ const images = [
     { url: 'http://localhost/img4.jpg' }
 ];
 
-render(<ImageGallery images={images} />, document.querySelector('div.image-gallery'));
+render(<ImageGallery images={images} onRestart={() => console.log('onRestart called!')} />, document.querySelector('div.image-gallery'));
