@@ -1,10 +1,25 @@
 {
   "name": "image-gallery-react",
-  "version": "0.2.7",
+  "version": "1.0.0",
   "description": "image-gallery-react",
   "main": "./build/image-gallery.min",
-  "author": "Victor Norgren <victor@logotype.se>",
+  "author": {
+    "name": "Victor Norgren",
+    "email": "victor@logotype.se",
+    "url": "logotype.se"
+  },
+  "repository": "logotype/image-gallery-react",
   "license": "MIT",
+  "keywords": [
+    "gallery",
+    "images",
+    "videos",
+    "image-gallery-react",
+    "react-image-gallery",
+    "slideshow",
+    "photos",
+    "lightbox"
+  ],
   "devDependencies": {
     "babel-cli": "6.24.1",
     "babel-core": "^6.25.0",
@@ -33,6 +48,9 @@
     "webpack-dev-server": "^2.5.0",
     "yargs": "^8.0.2"
   },
+  "dependencies": {
+    "whatwg-fetch": "^2.0.3"
+  },
   "peerDependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -42,8 +60,5 @@
     "eslint": "eslint *.config.babel.js src",
     "dev-start-devserver": "webpack-dev-server -d",
     "prod-build": "rimraf build && webpack -p --optimize-minimize"
-  },
-  "dependencies": {
-    "whatwg-fetch": "^2.0.3"
   }
 }
