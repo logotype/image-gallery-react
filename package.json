@@ -1,6 +1,6 @@
 {
   "name": "image-gallery-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "image-gallery-react",
   "main": "./build/image-gallery.min",
   "author": {
@@ -49,6 +49,7 @@
     "yargs": "^8.0.2"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "whatwg-fetch": "^2.0.3"
   },
   "peerDependencies": {

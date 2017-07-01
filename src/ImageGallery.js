@@ -1,6 +1,7 @@
 import 'whatwg-fetch';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 import Item from './components/Item';
 
@@ -46,12 +47,14 @@ export default class ImageGallery extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this._preload(nextProps.items)
-            .then(() => {
-                if(this._shouldSetState) {
-                    this.setState({ index: 0 });
-                }
-            });
+        if(!_.isEqual(this.props.items, nextProps.items)) {
+            this._preload(nextProps.items)
+                .then(() => {
+                    if(this._shouldSetState) {
+                        this.setState({ index: 0 });
+                    }
+                });
+        }
     }
 
     _preload(items) {
