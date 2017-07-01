@@ -4,7 +4,7 @@ Image Gallery for React
 [![npm version](https://badge.fury.io/js/image-gallery-react.svg)](https://badge.fury.io/js/image-gallery-react)
 [![Download Count](http://img.shields.io/npm/dm/image-gallery-react.svg?style=flat)](http://www.npmjs.com/package/image-gallery-react)
 
-Image Gallery for React is a component for building simple image slideshows.
+Image Gallery for React is a component for building simple image/video slideshows.
 
 ## Getting started
 
@@ -36,7 +36,7 @@ class MyComponent extends Component {
 
     return (
       <ImageGallery
-        images={images}
+        items={images}
         interval={5000}
         duration={1000}
       />
@@ -48,14 +48,14 @@ class MyComponent extends Component {
 
 # Props
 
-* `images`: (required) Array of objects. See example above.
+* `items`: (required) Array of objects. See example above.
   * Available Properties
-    * `url` - URL to image
+    * `url` - URL to image or video
 * `interval`: Integer, default `5000`
 * `duration`: Integer, default `1000`
   * Transition duration during image slide in milliseconds
 * `onRestart`: Function, `callback()`
-  * Called when slideshow has reached the last image
+  * Called when slideshow has reached the last item
 
 # License
 MIT License

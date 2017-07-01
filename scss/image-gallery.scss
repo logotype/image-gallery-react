@@ -4,7 +4,8 @@ div.image-gallery {
   box-sizing: border-box;
   position: relative;
   
-  div.image {
+  div.image,
+  video {
     position: absolute;
     width: 100%;
     height: 100%;

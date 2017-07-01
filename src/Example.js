@@ -15,7 +15,7 @@ const images = [
 
 render(
     <ImageGallery
-        images={images}
+        items={images}
         interval={5000}
         duration={1000}
         onRestart={() => console.log('Restarting...')}
