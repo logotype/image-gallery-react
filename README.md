@@ -4,6 +4,8 @@ Image Gallery for React
 [![npm version](https://badge.fury.io/js/image-gallery-react.svg)](https://badge.fury.io/js/image-gallery-react)
 [![Download Count](http://img.shields.io/npm/dm/image-gallery-react.svg?style=flat)](http://www.npmjs.com/package/image-gallery-react)
 
+![demo](https://raw.githubusercontent.com/logotype/image-gallery-react/master/images/image-gallery-react.gif)
+
 Image Gallery for React is a component for building simple image/video slideshows.
 
 ## Getting started
