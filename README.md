@@ -59,6 +59,12 @@ class MyComponent extends Component {
 * `onRestart`: Function, `callback()`
   * Called when slideshow has reached the last item
 
+# Functions
+
+* `previous`: Goes to previous item.
+* `next`: Goes to next item.
+* `set index`: Integer, Goes to specified item.
+
 # License
 MIT License
 

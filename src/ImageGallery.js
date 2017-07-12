@@ -79,6 +79,36 @@ export default class ImageGallery extends Component {
         clearInterval(this._interval);
     }
 
+    next() {
+        this._stop();
+        this._nextItem();
+        this._restart();
+    }
+
+    previous() {
+        this._stop();
+        this._previousItem();
+        this._restart();
+    }
+
+    set index(newIndex) {
+        this._stop();
+        this.setState({ index: newIndex });
+        this._restart();
+    }
+
+    _previousItem() {
+        let newIndex = this.state.index;
+        if(this.state.index === 0) {
+            newIndex = this.props.items.length - 1;
+        } else {
+            newIndex = this.state.index - 1;
+        }
+        if(this._shouldSetState) {
+            this.setState({ index: newIndex });
+        }
+    }
+
     _nextItem() {
         let newIndex = this.state.index;
         if(this.state.index === this.props.items.length - 1) {
